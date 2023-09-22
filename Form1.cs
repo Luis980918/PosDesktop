@@ -184,5 +184,10 @@ namespace PosDesktop
             totalPagar = 0;
             cantidadArticulos = 0;
         }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
