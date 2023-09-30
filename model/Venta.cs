@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +9,20 @@ namespace PosDesktop.model
 {
     public class Venta
     {
-        // Atributos
+        [Key]
+        [Required]
+        public int id { get; set; }
+        [Required]
         public int numeroItem { get; set; }
+        [Required]
         public decimal precioUnitario { get; set; }
+        [Required]
         public int cantidad { get; set; }
+        [Required]
+        public DateTime fechaMovimiento { get; set; }
 
         // Calcula el precio total automáticamente
+        [Required]
         public decimal precioTotal => precioUnitario * cantidad;
 
         // Constructor
