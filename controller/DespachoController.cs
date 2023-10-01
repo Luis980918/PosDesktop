@@ -9,47 +9,46 @@ using System.Threading.Tasks;
 
 namespace PosDesktop.controller
 {
-    internal class VentaController
+    internal class DespachoController
     {
         ModelVentas db = new ModelVentas();
-        public List<Venta> GetVentas()
+        public List<Despacho> GetDespachos()
         {
-            return db.Ventas.ToList();
+            return db.Despachos.ToList();
         }
 
-        public List<Venta> Search(DateTime fechaInicio, DateTime fechaFin)
+        public List<Despacho> Search(DateTime fechaInicio, DateTime fechaFin)
         {
-            /*if (fechaInicio == null && fechaFin == null)
+            if (fechaInicio == null && fechaFin == null)
             {
                 return db
-                    .Ventas
+                    .Despachos
                     .Where(x => x.fechaMovimiento == DateTime.UtcNow).ToList();
             } else
             {
                 return db
-                    .Ventas
+                    .Despachos
                     .Where(x => x.fechaMovimiento >= fechaInicio && x.fechaMovimiento <= fechaFin).ToList();
-            }*/
-            return db.Ventas.ToList();
+            }
         }
 
-        public bool Create(Venta venta)
+        public bool Create(Despacho despacho)
         {
-            Venta ventaGuardar = db.Ventas.Add(venta);
+            Despacho ventaGuardar = db.Despachos.Add(despacho);
             return db.SaveChanges() > 0;
         }
 
-        public bool Update(Venta venta)
+        public bool Update(Despacho despacho)
         {
-            db.Ventas.Attach(venta);
-            db.Entry(venta).State = EntityState.Modified;
+            db.Despachos.Attach(despacho);
+            db.Entry(despacho).State = EntityState.Modified;
             return db.SaveChanges() > 0;
 
         }
 
-        public bool Delete(Venta venta)
+        public bool Delete(Despacho despacho)
         {
-            db.Ventas.Remove(venta);
+            db.Despachos.Remove(despacho);
             return db.SaveChanges() > 0;
         }
     }

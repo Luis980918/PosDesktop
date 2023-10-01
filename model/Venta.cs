@@ -19,12 +19,11 @@ namespace PosDesktop.model
         [Required]
         public int cantidad { get; set; }
         [Required]
-        public DateTime fechaMovimiento { get; set; }
+        public Despacho despacho { get; set; }
 
         // Calcula el precio total automáticamente
         [Required]
         public decimal precioTotal => precioUnitario * cantidad;
-
         // Constructor
         public Venta(int numeroItem, decimal precioUnitario)
         {

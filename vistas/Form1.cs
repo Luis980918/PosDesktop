@@ -1,4 +1,5 @@
 ﻿using PosDesktop.context;
+using PosDesktop.controller;
 using PosDesktop.model;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,10 @@ namespace PosDesktop
         int cantidadArticulos = 0;
         decimal totalPagar = 0;
         int rowSelect = 0;
+        List<Venta> detalleVentas = new List<Venta>();
+        Despacho despacho = new Despacho();
+        VentaController ventaController = new VentaController();
+        DespachoController despachoController = new DespachoController();
 
         public Form1()
         {
@@ -29,6 +34,7 @@ namespace PosDesktop
         private void Form1_Load(object sender, EventArgs e)
         {
             ModelVentas db = new ModelVentas();
+            var despachos = db.Despachos.ToList();
             var ventas = db.Ventas.ToList();
         }
 
@@ -121,6 +127,7 @@ namespace PosDesktop
                 {
                     btnPagar.Enabled = true;
                 }
+                detalleVentas.Add(venta);
                 limpiarCampos();
             }
             else
@@ -176,7 +183,14 @@ namespace PosDesktop
             myForm.ShowDialog();*/
             if (input != "0" && decimal.TryParse(input, out valorDevolver))
             {
-                MessageBox.Show("Devuelta: " + (valorDevolver - totalPagar));
+                decimal devuelta = valorDevolver - totalPagar;
+                MessageBox.Show("Devuelta: " + devuelta);
+                despacho.pagoTotal = totalPagar;
+                despacho.fechaMovimiento = DateTime.Now;
+                despacho.totalRecibido = valorDevolver;
+                despacho.totalDevuelto = devuelta;
+                despacho.ventas = detalleVentas;
+                despachoController.Create(despacho);
                 limpiarCampos();
                 limpiarTodo();
             }
@@ -188,6 +202,8 @@ namespace PosDesktop
             label2.Text = "$0";
             totalPagar = 0;
             cantidadArticulos = 0;
+            detalleVentas = new List<Venta>();
+            despacho = new Despacho();
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
@@ -214,6 +230,7 @@ namespace PosDesktop
         {
             panelMovimientos.Visible = true;
             panelGeneral.Visible = false;
+            despachoBindingSource.DataSource = despachoController.GetDespachos();
         }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
@@ -225,6 +242,40 @@ namespace PosDesktop
         {
             panelGeneral.Visible = true;
             panelMovimientos.Visible = false;
+        }
+
+        private void items_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void bindingNavigatorMoveLastItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelMovimientos_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buscarMovs_Click(object sender, EventArgs e)
+        {
+            DateTime fechaInicial = fechaInicio.Value;
+            DateTime fechaFinal = fechaFin.Value;
+            if (fechaInicial > fechaFinal)
+            {
+                MessageBox.Show("La fecha inicial debe ser menor o igual que la fecha final");
+            } else
+            {
+                despachoBindingSource.DataSource = despachoController.Search(fechaInicial.Date, fechaFinal.Date.AddDays(1));
+
+            }
         }
     }
 }

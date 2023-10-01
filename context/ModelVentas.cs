@@ -14,5 +14,6 @@ namespace PosDesktop.context
         }
 
         public virtual DbSet<Venta> Ventas { get; set; }
+        public virtual DbSet<Despacho> Despachos { get; set; }
     }
 }

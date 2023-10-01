@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace PosDesktop
 {
@@ -30,10 +31,16 @@ namespace PosDesktop
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label fechaMovimientoLabel;
+            System.Windows.Forms.Label label7;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.ventas = new System.Windows.Forms.Button();
             this.cierre = new System.Windows.Forms.Button();
@@ -51,25 +58,70 @@ namespace PosDesktop
             this.btnEliminar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnPagar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.items = new System.Windows.Forms.DataGridView();
             this.item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidadArticulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnPagar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.panelMovimientos = new System.Windows.Forms.Panel();
+            this.despachoDataGridView = new System.Windows.Forms.DataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.buscarMovs = new System.Windows.Forms.Button();
+            this.fechaFin = new System.Windows.Forms.DateTimePicker();
+            this.fechaInicio = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pagoTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalRecibidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalDevueltoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaMovimientoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.despachoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ventaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            fechaMovimientoLabel = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelGeneral.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.items)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.items)).BeginInit();
             this.panelMovimientos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.despachoDataGridView)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.despachoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ventaBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // fechaMovimientoLabel
+            // 
+            fechaMovimientoLabel.AutoSize = true;
+            fechaMovimientoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            fechaMovimientoLabel.ForeColor = System.Drawing.Color.Blue;
+            fechaMovimientoLabel.Location = new System.Drawing.Point(7, 36);
+            fechaMovimientoLabel.Name = "fechaMovimientoLabel";
+            fechaMovimientoLabel.Size = new System.Drawing.Size(99, 16);
+            fechaMovimientoLabel.TabIndex = 19;
+            fechaMovimientoLabel.Text = "Fecha Inicial:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label7.ForeColor = System.Drawing.Color.Blue;
+            label7.Location = new System.Drawing.Point(7, 76);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(92, 16);
+            label7.TabIndex = 21;
+            label7.Text = "Fecha Final:";
             // 
             // panelMenu
             // 
@@ -182,8 +234,8 @@ namespace PosDesktop
             // 
             this.panelGeneral.Controls.Add(this.label4);
             this.panelGeneral.Controls.Add(this.groupBox2);
-            this.panelGeneral.Controls.Add(this.items);
             this.panelGeneral.Controls.Add(this.groupBox1);
+            this.panelGeneral.Controls.Add(this.items);
             this.panelGeneral.Location = new System.Drawing.Point(174, 0);
             this.panelGeneral.Name = "panelGeneral";
             this.panelGeneral.Size = new System.Drawing.Size(1050, 502);
@@ -247,6 +299,7 @@ namespace PosDesktop
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(128, 29);
             this.textBox2.TabIndex = 7;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.textBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyDown);
             // 
             // btnEliminar
@@ -288,67 +341,6 @@ namespace PosDesktop
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // items
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.items.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.items.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.item,
-            this.valorUnitario,
-            this.cantidadArticulo,
-            this.valorTotal});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.items.DefaultCellStyle = dataGridViewCellStyle2;
-            this.items.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.items.Location = new System.Drawing.Point(51, 236);
-            this.items.Name = "items";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.items.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.items.Size = new System.Drawing.Size(593, 216);
-            this.items.TabIndex = 20;
-            // 
-            // item
-            // 
-            this.item.HeaderText = "Artículo";
-            this.item.Name = "item";
-            this.item.Width = 150;
-            // 
-            // valorUnitario
-            // 
-            this.valorUnitario.HeaderText = "Valor unitario";
-            this.valorUnitario.Name = "valorUnitario";
-            this.valorUnitario.Width = 150;
-            // 
-            // cantidadArticulo
-            // 
-            this.cantidadArticulo.HeaderText = "Cantidad";
-            this.cantidadArticulo.Name = "cantidadArticulo";
-            // 
-            // valorTotal
-            // 
-            this.valorTotal.HeaderText = "Valor total";
-            this.valorTotal.Name = "valorTotal";
-            this.valorTotal.Width = 150;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnPagar);
@@ -389,14 +381,151 @@ namespace PosDesktop
             this.label2.TabIndex = 0;
             this.label2.Text = "$0";
             // 
+            // items
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.items.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.items.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.item,
+            this.valorUnitario,
+            this.cantidadArticulo,
+            this.valorTotal});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.items.DefaultCellStyle = dataGridViewCellStyle2;
+            this.items.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.items.Location = new System.Drawing.Point(51, 236);
+            this.items.Name = "items";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.items.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.items.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.items.Size = new System.Drawing.Size(593, 216);
+            this.items.TabIndex = 20;
+            this.items.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.items_CellContentClick_1);
+            // 
+            // item
+            // 
+            this.item.HeaderText = "Artículo";
+            this.item.Name = "item";
+            this.item.Width = 150;
+            // 
+            // valorUnitario
+            // 
+            this.valorUnitario.HeaderText = "Valor unitario";
+            this.valorUnitario.Name = "valorUnitario";
+            this.valorUnitario.Width = 150;
+            // 
+            // cantidadArticulo
+            // 
+            this.cantidadArticulo.HeaderText = "Cantidad";
+            this.cantidadArticulo.Name = "cantidadArticulo";
+            // 
+            // valorTotal
+            // 
+            this.valorTotal.HeaderText = "Valor total";
+            this.valorTotal.Name = "valorTotal";
+            this.valorTotal.Width = 150;
+            // 
             // panelMovimientos
             // 
+            this.panelMovimientos.Controls.Add(this.despachoDataGridView);
+            this.panelMovimientos.Controls.Add(this.groupBox3);
             this.panelMovimientos.Controls.Add(this.label6);
             this.panelMovimientos.Location = new System.Drawing.Point(175, 0);
             this.panelMovimientos.Name = "panelMovimientos";
-            this.panelMovimientos.Size = new System.Drawing.Size(1050, 499);
+            this.panelMovimientos.Size = new System.Drawing.Size(1050, 514);
             this.panelMovimientos.TabIndex = 24;
             this.panelMovimientos.Visible = false;
+            this.panelMovimientos.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMovimientos_Paint);
+            // 
+            // despachoDataGridView
+            // 
+            this.despachoDataGridView.AutoGenerateColumns = false;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.despachoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.despachoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.despachoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
+            this.despachoDataGridView.DataSource = this.despachoBindingSource;
+            this.despachoDataGridView.Location = new System.Drawing.Point(409, 154);
+            this.despachoDataGridView.Name = "despachoDataGridView";
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.despachoDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.despachoDataGridView.Size = new System.Drawing.Size(611, 220);
+            this.despachoDataGridView.TabIndex = 24;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.buscarMovs);
+            this.groupBox3.Controls.Add(this.fechaFin);
+            this.groupBox3.Controls.Add(label7);
+            this.groupBox3.Controls.Add(this.fechaInicio);
+            this.groupBox3.Controls.Add(fechaMovimientoLabel);
+            this.groupBox3.Location = new System.Drawing.Point(50, 150);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(322, 228);
+            this.groupBox3.TabIndex = 24;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Filtros";
+            // 
+            // buscarMovs
+            // 
+            this.buscarMovs.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buscarMovs.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.buscarMovs.Image = ((System.Drawing.Image)(resources.GetObject("buscarMovs.Image")));
+            this.buscarMovs.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buscarMovs.Location = new System.Drawing.Point(10, 152);
+            this.buscarMovs.Name = "buscarMovs";
+            this.buscarMovs.Size = new System.Drawing.Size(293, 51);
+            this.buscarMovs.TabIndex = 25;
+            this.buscarMovs.Text = "Buscar";
+            this.buscarMovs.UseVisualStyleBackColor = true;
+            this.buscarMovs.Click += new System.EventHandler(this.buscarMovs_Click);
+            // 
+            // fechaFin
+            // 
+            this.fechaFin.Location = new System.Drawing.Point(116, 76);
+            this.fechaFin.Name = "fechaFin";
+            this.fechaFin.Size = new System.Drawing.Size(200, 20);
+            this.fechaFin.TabIndex = 22;
+            this.fechaFin.Value = new System.DateTime(2023, 9, 30, 21, 20, 4, 307);
+            // 
+            // fechaInicio
+            // 
+            this.fechaInicio.Location = new System.Drawing.Point(116, 36);
+            this.fechaInicio.Name = "fechaInicio";
+            this.fechaInicio.Size = new System.Drawing.Size(200, 20);
+            this.fechaInicio.TabIndex = 20;
+            this.fechaInicio.Value = new System.DateTime(2023, 9, 30, 21, 20, 4, 309);
             // 
             // label6
             // 
@@ -409,21 +538,94 @@ namespace PosDesktop
             this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label6.Location = new System.Drawing.Point(47, 41);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(434, 66);
+            this.label6.Size = new System.Drawing.Size(434, 81);
             this.label6.TabIndex = 23;
             this.label6.Text = "Movimientos de caja";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // pagoTotalDataGridViewTextBoxColumn
+            // 
+            this.pagoTotalDataGridViewTextBoxColumn.DataPropertyName = "pagoTotal";
+            this.pagoTotalDataGridViewTextBoxColumn.HeaderText = "pagoTotal";
+            this.pagoTotalDataGridViewTextBoxColumn.Name = "pagoTotalDataGridViewTextBoxColumn";
+            // 
+            // totalRecibidoDataGridViewTextBoxColumn
+            // 
+            this.totalRecibidoDataGridViewTextBoxColumn.DataPropertyName = "totalRecibido";
+            this.totalRecibidoDataGridViewTextBoxColumn.HeaderText = "totalRecibido";
+            this.totalRecibidoDataGridViewTextBoxColumn.Name = "totalRecibidoDataGridViewTextBoxColumn";
+            // 
+            // totalDevueltoDataGridViewTextBoxColumn
+            // 
+            this.totalDevueltoDataGridViewTextBoxColumn.DataPropertyName = "totalDevuelto";
+            this.totalDevueltoDataGridViewTextBoxColumn.HeaderText = "totalDevuelto";
+            this.totalDevueltoDataGridViewTextBoxColumn.Name = "totalDevueltoDataGridViewTextBoxColumn";
+            // 
+            // fechaMovimientoDataGridViewTextBoxColumn
+            // 
+            this.fechaMovimientoDataGridViewTextBoxColumn.DataPropertyName = "fechaMovimiento";
+            this.fechaMovimientoDataGridViewTextBoxColumn.HeaderText = "fechaMovimiento";
+            this.fechaMovimientoDataGridViewTextBoxColumn.Name = "fechaMovimientoDataGridViewTextBoxColumn";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "pagoTotal";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Total";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "totalRecibido";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Recibido";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "totalDevuelto";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Devuelto";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "fechaMovimiento";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Fecha";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 130;
+            // 
+            // despachoBindingSource
+            // 
+            this.despachoBindingSource.DataSource = typeof(PosDesktop.model.Despacho);
+            // 
+            // ventaBindingSource
+            // 
+            this.ventaBindingSource.DataSource = typeof(PosDesktop.model.Venta);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.ClientSize = new System.Drawing.Size(1224, 505);
-            this.Controls.Add(this.panelGeneral);
+            this.ClientSize = new System.Drawing.Size(1225, 514);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelLogo);
             this.Controls.Add(this.panelMovimientos);
+            this.Controls.Add(this.panelGeneral);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -438,10 +640,15 @@ namespace PosDesktop
             this.panelGeneral.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.items)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.items)).EndInit();
             this.panelMovimientos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.despachoDataGridView)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.despachoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ventaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -474,6 +681,23 @@ namespace PosDesktop
         private Button ventas;
         private Panel panelMovimientos;
         private Label label6;
+        private BindingSource ventaBindingSource;
+        private DataGridView despachoDataGridView;
+        private BindingSource despachoBindingSource;
+        private GroupBox groupBox3;
+        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn pagoTotalDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn totalRecibidoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn totalDevueltoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fechaMovimientoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DateTimePicker fechaInicio;
+        private DateTimePicker fechaFin;
+        private Button buscarMovs;
     }
 }
 
