@@ -25,6 +25,8 @@ namespace PosDesktop
         Despacho despacho = new Despacho();
         VentaController ventaController = new VentaController();
         DespachoController despachoController = new DespachoController();
+        CierreController cierreController = new CierreController();
+        List<Despacho> movimientosDia = new List<Despacho>();
 
         public Form1()
         {
@@ -36,6 +38,7 @@ namespace PosDesktop
             ModelVentas db = new ModelVentas();
             var despachos = db.Despachos.ToList();
             var ventas = db.Ventas.ToList();
+            var cierres = db.Cierres.ToList();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -218,7 +221,18 @@ namespace PosDesktop
 
         private void cierre_Click(object sender, EventArgs e)
         {
+            panelGeneral.Visible = false;
+            panelCierreCaja.Visible = true;
+            panelMovimientos.Visible = false;
+            cierreBindingSource.DataSource = cierreController.GetCierres();
+            movimientosDia = despachoController.Search(DateTime.Today, DateTime.Today.AddDays(1));
 
+            Decimal pagoTotal = movimientosDia.Select(mov => mov.pagoTotal).DefaultIfEmpty().Sum();
+            txtTotalCierre.Text = pagoTotal.ToString();
+            txtTotalCierre.Enabled = false;
+            cierreBindingSource.ResetBindings(false);
+            cierreBindingSource.DataSource = cierreController.GetCierres();
+            cierreBindingSource.ResetBindings(false);
         }
 
         private void panelGeneral_Paint(object sender, PaintEventArgs e)
@@ -230,6 +244,7 @@ namespace PosDesktop
         {
             panelMovimientos.Visible = true;
             panelGeneral.Visible = false;
+            panelCierreCaja.Visible = false;
             despachoBindingSource.DataSource = despachoController.GetDespachos();
         }
 
@@ -241,6 +256,7 @@ namespace PosDesktop
         private void ventas_Click(object sender, EventArgs e)
         {
             panelGeneral.Visible = true;
+            panelCierreCaja.Visible = false;
             panelMovimientos.Visible = false;
         }
 
@@ -275,6 +291,54 @@ namespace PosDesktop
             {
                 despachoBindingSource.DataSource = despachoController.Search(fechaInicial.Date, fechaFinal.Date.AddDays(1));
 
+            }
+        }
+
+        private void cierreDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void guardar_Click(object sender, EventArgs e)
+        {
+            if (txtTrabajadoras.Text != "" && txtAhorro.Text != "" && 
+                txtBase.Text != "" && txtTotalCierre.Text != "") {
+                decimal totalTrabajadoras = 0;
+                decimal totalAhorro = 0;
+                decimal totalBase = 0;
+                decimal totalCierre = 0;
+                if (decimal.TryParse(txtTrabajadoras.Text, out totalTrabajadoras) &&
+                    decimal.TryParse(txtAhorro.Text, out totalAhorro) &&
+                    decimal.TryParse(txtBase.Text, out totalBase) &&
+                    decimal.TryParse(txtTotalCierre.Text, out totalCierre)) {
+                    Cierre cierre = new Cierre();
+                    cierre.pagoTrabajadoras = totalTrabajadoras;
+                    cierre.ahorro = totalAhorro;
+                    cierre.totalBase = totalBase;
+                    cierre.totalEnCaja = totalCierre - (totalTrabajadoras + totalAhorro + totalBase); 
+                    cierre.totalCierre = totalCierre;
+                    cierre.fecha = DateTime.Today;
+                    cierre.movimientos = movimientosDia;
+                    cierreController.Create(cierre);
+                    cierreBindingSource.DataSource = cierreController.GetCierres();
+                }
+            }
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            CierreAct cierreAct = new CierreAct();
+            String id = cierreDataGridView.CurrentRow.Cells[0].Value.ToString();
+            int codigo = 0;
+            if (id != "" && int.TryParse(id, out codigo))
+            {
+                cierreAct.setCierre(codigo);
+                cierreAct.Show();
+                cierreDataGridView.DataSource = cierreController.GetCierres();
+            }
+            else
+            {
+                MessageBox.Show("No se encuentra seleccionado ningún cierre");
             }
         }
     }
