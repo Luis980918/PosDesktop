@@ -24,7 +24,5 @@ namespace PosDesktop.model
         public decimal totalCierre { get; set; }
         [Required]
         public DateTime fecha { get; set; }
-        [Required]
-        public List<Despacho> movimientos { get; set; }
     }
 }

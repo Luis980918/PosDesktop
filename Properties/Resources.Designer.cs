@@ -73,6 +73,16 @@ namespace PosDesktop.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap activo {
+            get {
+                object obj = ResourceManager.GetObject("activo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bolsa_de_la_compra {
             get {
                 object obj = ResourceManager.GetObject("bolsa-de-la-compra", resourceCulture);
@@ -126,6 +136,16 @@ namespace PosDesktop.Properties {
         internal static System.Drawing.Bitmap Imagen_de_WhatsApp_2023_03_23_a_las_13_05_46 {
             get {
                 object obj = ResourceManager.GetObject("Imagen de WhatsApp 2023-03-23 a las 13.05.46", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap notificacion {
+            get {
+                object obj = ResourceManager.GetObject("notificacion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

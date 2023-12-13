@@ -22,7 +22,6 @@ namespace PosDesktop.model
         public DateTime fechaMovimiento { get; set; }
         [Required]
         public List<Venta> ventas {  get; set; }
-        public Cierre cierre { get; set; }
 
     }
 }

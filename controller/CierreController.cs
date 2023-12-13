@@ -19,18 +19,29 @@ namespace PosDesktop.controller
 
         public List<Cierre> Search(DateTime fechaInicio, DateTime fechaFin)
         {
-            /*if (fechaInicio == null && fechaFin == null)
+            if (fechaInicio == null && fechaFin == null)
             {
                 return db
-                    .Ventas
-                    .Where(x => x.fechaMovimiento == DateTime.UtcNow).ToList();
+                    .Cierres
+                    .Where(x => x.fecha == DateTime.UtcNow).ToList();
             } else
             {
                 return db
-                    .Ventas
-                    .Where(x => x.fechaMovimiento >= fechaInicio && x.fechaMovimiento <= fechaFin).ToList();
-            }*/
+                    .Cierres
+                    .Where(x => x.fecha >= fechaInicio && x.fecha <= fechaFin).ToList();
+            }
             return db.Cierres.ToList();
+        }
+
+        public List<Cierre> SearchByToday()
+        {
+            DateTime today = DateTime.Now.Date;
+            DateTime tomorrow = today.AddDays(1);
+
+            return db
+                .Cierres
+                .Where(x => x.fecha >= today && x.fecha < tomorrow)
+                .ToList();
         }
 
         public Cierre SearchById(int id)

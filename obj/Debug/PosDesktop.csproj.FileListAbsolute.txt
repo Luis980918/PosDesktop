@@ -66,3 +66,9 @@ C:\Users\luis9\source\repos\PosDesktop\PosDesktop\bin\Debug\es\Microsoft.VisualS
 C:\Users\luis9\source\repos\PosDesktop\PosDesktop\bin\Debug\es\Microsoft.VisualStudio.Shell.15.0.resources.dll
 C:\Users\luis9\source\repos\PosDesktop\PosDesktop\bin\Debug\es\Microsoft.VisualStudio.GraphModel.resources.dll
 C:\Users\luis9\source\repos\PosDesktop\PosDesktop\obj\Debug\PosDesktop.CierreAct.resources
+C:\Users\luis9\source\repos\PosDesktop\PosDesktop\bin\Debug\PosDesktop.exe.manifest
+C:\Users\luis9\source\repos\PosDesktop\PosDesktop\bin\Debug\PosDesktop.application
+C:\Users\luis9\source\repos\PosDesktop\PosDesktop\obj\Debug\PosDesktop.exe.manifest
+C:\Users\luis9\source\repos\PosDesktop\PosDesktop\obj\Debug\PosDesktop.application
+C:\Users\luis9\source\repos\PosDesktop\PosDesktop\obj\Debug\PosDesktop.vistas.MessageBoxPos.resources
+C:\Users\luis9\source\repos\PosDesktop\PosDesktop\obj\Debug\PosDesktop.vistas.MessageTextPos.resources

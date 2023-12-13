@@ -1,6 +1,7 @@
 ﻿using PosDesktop.context;
 using PosDesktop.controller;
 using PosDesktop.model;
+using PosDesktop.vistas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,10 +28,43 @@ namespace PosDesktop
         DespachoController despachoController = new DespachoController();
         CierreController cierreController = new CierreController();
         List<Despacho> movimientosDia = new List<Despacho>();
+        List<Cierre> cierresTotal = new List<Cierre>();
 
         public Form1()
         {
             InitializeComponent();
+            inicializarGridCierre();
+            inicializarGridMovimientos();
+        }
+
+        public void inicializarGridCierre()
+        {
+            for (int i = 1; i < 6; i++) // Comienza desde la columna 1
+            {
+                cierreDataGridView.Columns[i].DefaultCellStyle.Format = "C0"; // Formato de moneda sin decimales
+                cierreDataGridView.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight; // Alinear a la derecha
+            }
+
+            // Opcionalmente, para cambiar el formato de los encabezados de las columnas 2 a 6:
+            for (int i = 1; i < 6; i++)
+            {
+                cierreDataGridView.Columns[i].HeaderCell.Style.Font = new Font(cierreDataGridView.Font, FontStyle.Bold);
+            }
+        }
+
+        public void inicializarGridMovimientos()
+        {
+            for (int i = 1; i < 4; i++) // Comienza desde la columna 1
+            {
+                despachoDataGridView.Columns[i].DefaultCellStyle.Format = "C0"; // Formato de moneda sin decimales
+                despachoDataGridView.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight; // Alinear a la derecha
+            }
+
+            // Opcionalmente, para cambiar el formato de los encabezados de las columnas 2 a 6:
+            for (int i = 1; i < 4; i++)
+            {
+                despachoDataGridView.Columns[i].HeaderCell.Style.Font = new Font(despachoDataGridView.Font, FontStyle.Bold);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -78,6 +112,10 @@ namespace PosDesktop
                 venta.cantidad = 1;
                 textBox2.SelectAll();
             }
+            if (e.KeyCode == Keys.Oemplus || e.KeyCode == Keys.Add)
+            {
+                realizarVenta();
+            }
         }
 
         private void agregarValor()
@@ -103,6 +141,10 @@ namespace PosDesktop
             {
                 agregarValor();
                 agregarCantidad();
+            }
+            if (e.KeyCode == Keys.Oemplus || e.KeyCode == Keys.Add)
+            {
+                realizarVenta();
             }
         }
 
@@ -180,23 +222,65 @@ namespace PosDesktop
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            decimal valorDevolver = 0;
-            string input = Microsoft.VisualBasic.Interaction.InputBox("¿Cuanto dinero recibiste?", "Total", "0");
+            realizarVenta();
+        }
+
+        private void realizarVenta()
+        {
+            if (totalPagar > 0)
+            {
+                MessageTextPos messageText = new MessageTextPos(this);
+                messageText.setTitulo("¿Cuanto dinero recibiste?");
+                messageText.setTxtDevolver("0");
+                /*Microsoft.VisualBasic.Interaction.InputBox("¿Cuanto dinero recibiste?", "Total", "0");*/
+                messageText.Show();
+            } else
+            {
+                MessageBoxPos message = new MessageBoxPos();
+                message.setTitulo("¡Alerta!");
+                message.setMensaje("Debe haber por lo menos un\nartículo para realizar la venta");
+                message.Show();
+            }
+        }
+
+        public void continuarCompra(string input) {
             /*MyForm myForm = new MyForm();
             myForm.ShowDialog();*/
-            if (input != "0" && decimal.TryParse(input, out valorDevolver))
+            decimal valorDevolver = 0;
+
+            if (input != null && (input != "0" && decimal.TryParse(input, out valorDevolver)))
             {
+
                 decimal devuelta = valorDevolver - totalPagar;
-                MessageBox.Show("Devuelta: " + devuelta);
                 despacho.pagoTotal = totalPagar;
                 despacho.fechaMovimiento = DateTime.Now;
                 despacho.totalRecibido = valorDevolver;
                 despacho.totalDevuelto = devuelta;
                 despacho.ventas = detalleVentas;
                 despachoController.Create(despacho);
+                MessageBoxPos messageBoxPos = new MessageBoxPos(this);
+                messageBoxPos.setTitulo("Total a devolver:");
+                messageBoxPos.setMensaje(devuelta.ToString("C0"));
+                messageBoxPos.Show();
+
+            }
+            else if (input == "0" && decimal.TryParse(input, out valorDevolver))
+            {
+                despacho.pagoTotal = totalPagar;
+                despacho.fechaMovimiento = DateTime.Now;
+                despacho.totalRecibido = totalPagar;
+                despacho.totalDevuelto = 0;
+                despacho.ventas = detalleVentas;
+                despachoController.Create(despacho);
                 limpiarCampos();
                 limpiarTodo();
             }
+        }
+
+        public void finalizarVenta()
+        {
+            limpiarCampos();
+            limpiarTodo();
         }
 
         private void limpiarTodo()
@@ -224,15 +308,32 @@ namespace PosDesktop
             panelGeneral.Visible = false;
             panelCierreCaja.Visible = true;
             panelMovimientos.Visible = false;
+
+            List<Cierre> cierresExistentes = cierreController.SearchByToday();
+
+            if (cierresExistentes.Count > 0)
+            {
+                txtTrabajadoras.Enabled = false;
+                txtAhorro.Enabled   = false;
+                txtBase.Enabled = false;
+                MessageBox.Show("Ya existe un cierre para el día de hoy, debe actualizar los datos si considera que hay una equivocación");
+            }
+
+            cierreDataGridView.Refresh();
             cierreBindingSource.DataSource = cierreController.GetCierres();
+            cierreDataGridView.Refresh();
             movimientosDia = despachoController.Search(DateTime.Today, DateTime.Today.AddDays(1));
+
 
             Decimal pagoTotal = movimientosDia.Select(mov => mov.pagoTotal).DefaultIfEmpty().Sum();
             txtTotalCierre.Text = pagoTotal.ToString();
             txtTotalCierre.Enabled = false;
             cierreBindingSource.ResetBindings(false);
+            
+            cierreDataGridView.Refresh();
             cierreBindingSource.DataSource = cierreController.GetCierres();
             cierreBindingSource.ResetBindings(false);
+            cierreDataGridView.Refresh();
         }
 
         private void panelGeneral_Paint(object sender, PaintEventArgs e)
@@ -250,7 +351,11 @@ namespace PosDesktop
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
-
+            if (decimal.TryParse(textBox1.Text, out decimal value))
+            {
+                textBox1.Text = value.ToString("N0");
+                textBox1.SelectionStart = textBox1.Text.Length;
+            }
         }
 
         private void ventas_Click(object sender, EventArgs e)
@@ -277,7 +382,12 @@ namespace PosDesktop
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
+            if (decimal.TryParse(textBox2.Text, out decimal value))
+            {
+                textBox2.Text = value.ToString("N0");
+                textBox2.SelectionStart = textBox2.Text.Length;
 
+            }
         }
 
         private void buscarMovs_Click(object sender, EventArgs e)
@@ -318,28 +428,171 @@ namespace PosDesktop
                     cierre.totalEnCaja = totalCierre - (totalTrabajadoras + totalAhorro + totalBase); 
                     cierre.totalCierre = totalCierre;
                     cierre.fecha = DateTime.Today;
-                    cierre.movimientos = movimientosDia;
                     cierreController.Create(cierre);
+                    
                     cierreBindingSource.DataSource = cierreController.GetCierres();
-                }
+                    cierreDataGridView.Refresh();
+                    txtTrabajadoras.Text = "";
+                    txtAhorro.Text = "";
+                    txtBase.Text = "";
+                    txtTrabajadoras.Enabled = false;
+                    txtAhorro.Enabled = false;
+                    txtBase.Enabled = false;
+                    }
+            } else
+            {
+                MessageBox.Show("No se puede cerrar el día si falta algún dato o hay información errónea");
             }
+        }
+
+        public void actualizar(Cierre cierre)
+        {
+            cierreController.Update(cierre);
+            cierreBindingSource.DataSource = cierreController.GetCierres();
+            cierreDataGridView.Refresh();
         }
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            CierreAct cierreAct = new CierreAct();
-            String id = cierreDataGridView.CurrentRow.Cells[0].Value.ToString();
-            int codigo = 0;
-            if (id != "" && int.TryParse(id, out codigo))
+            string fecha = cierreDataGridView.CurrentRow.Cells[6].Value.ToString();
+            DateTime fechaAct;
+
+            if (DateTime.TryParse(fecha, out fechaAct))
             {
-                cierreAct.setCierre(codigo);
-                cierreAct.Show();
-                cierreDataGridView.DataSource = cierreController.GetCierres();
+                fechaAct = fechaAct.Date; // Establecer la hora al inicio del día
+                if ((cierreDataGridView.RowCount > 1) && DateTime.Today == fechaAct)
+                {
+                    CierreAct cierreAct = new CierreAct();
+                    String id = cierreDataGridView.CurrentRow.Cells[0].Value.ToString();
+                    int codigo = 0;
+                    if (id != "" && int.TryParse(id, out codigo))
+                    {
+                        cierreAct.setCierre(codigo, this);
+                        cierreAct.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encuentra seleccionado ningún cierre");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Solo se puede actualizar un cierre si es del día actual");
+                }
             }
             else
             {
-                MessageBox.Show("No se encuentra seleccionado ningún cierre");
+                MessageBox.Show("La fecha no es válida.");
             }
+
+        }
+
+        private void txtTrabajadoras_TextChanged(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(txtTrabajadoras.Text, out decimal value))
+            {
+                txtTrabajadoras.Text = value.ToString("N0");
+                txtTrabajadoras.SelectionStart = txtTrabajadoras.Text.Length;
+
+            }
+        }
+
+        private void txtAhorro_TextChanged(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(txtAhorro.Text, out decimal value))
+            {
+                txtAhorro.Text = value.ToString("N0");
+                txtAhorro.SelectionStart = txtAhorro.Text.Length;
+
+            }
+        }
+
+        private void txtBase_TextChanged(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(txtBase.Text, out decimal value))
+            {
+                txtBase.Text = value.ToString("N0");
+                txtBase.SelectionStart = txtBase.Text.Length;
+            }
+        }
+
+        private void txtTotalCierre_TextChanged(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(txtTotalCierre.Text, out decimal value))
+            {
+                txtTotalCierre.Text = value.ToString("N0");
+                txtTotalCierre.SelectionStart = txtTotalCierre.Text.Length;
+            }
+        }
+
+        private void panelCierreCaja_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTrabajadoras_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && (txtTrabajadoras.Text != ""))
+            {
+                txtAhorro.Focus();
+            }
+        }
+
+        private void txtAhorro_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && (txtAhorro.Text != ""))
+            {
+                txtBase.Focus();
+            }
+        }
+
+        private void txtBase_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && (txtBase.Text != ""))
+            {
+                txtTotalCierre.Focus();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DateTime fechaInicial = fechaInicialCierre.Value.Date;
+            DateTime fechaFinal = fechaFinalCierre.Value;
+            if (fechaInicial > fechaFinal)
+            {
+                MessageBox.Show("La fecha inicial debe ser menor o igual que la fecha final");
+            }
+            else
+            {
+                cierresTotal = cierreController.Search(fechaInicial, fechaFinal);
+
+                Decimal totalFecha = cierresTotal.Select(mov => mov.totalEnCaja).DefaultIfEmpty().Sum();
+                MessageBoxPos mensaje = new MessageBoxPos();
+                mensaje.setTitulo("Total: ");
+                mensaje.setMensaje(totalFecha.ToString("C0"));
+                mensaje.Show();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            limpiarCampos();
+            limpiarTodo();
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
