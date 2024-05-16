@@ -22,6 +22,7 @@ namespace PosDesktop.model
         public DateTime fechaMovimiento { get; set; }
         [Required]
         public List<Venta> ventas {  get; set; }
+        public Separado separados { get; set; }
 
     }
 }

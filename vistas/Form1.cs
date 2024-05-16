@@ -73,6 +73,8 @@ namespace PosDesktop
             var despachos = db.Despachos.ToList();
             var ventas = db.Ventas.ToList();
             var cierres = db.Cierres.ToList();
+            var separados = db.Separados.ToList();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -308,6 +310,7 @@ namespace PosDesktop
             panelGeneral.Visible = false;
             panelCierreCaja.Visible = true;
             panelMovimientos.Visible = false;
+            panelPises.Visible = false;
 
             List<Cierre> cierresExistentes = cierreController.SearchByToday();
 
@@ -346,6 +349,7 @@ namespace PosDesktop
             panelMovimientos.Visible = true;
             panelGeneral.Visible = false;
             panelCierreCaja.Visible = false;
+            panelPises.Visible = false;
             despachoBindingSource.DataSource = despachoController.GetDespachos();
         }
 
@@ -363,6 +367,7 @@ namespace PosDesktop
             panelGeneral.Visible = true;
             panelCierreCaja.Visible = false;
             panelMovimientos.Visible = false;
+            panelPises.Visible = false;
         }
 
         private void items_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -591,6 +596,34 @@ namespace PosDesktop
         }
 
         private void label2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            panelMovimientos.Visible = false;
+            panelGeneral.Visible = false;
+            panelCierreCaja.Visible = false;
+            panelPises.Visible = true;
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panelPises_Paint(object sender, PaintEventArgs e)
         {
 
         }
