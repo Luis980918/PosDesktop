@@ -37,21 +37,21 @@
             // titulo
             // 
             this.titulo.AutoSize = true;
-            this.titulo.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titulo.ForeColor = System.Drawing.Color.Blue;
             this.titulo.Location = new System.Drawing.Point(24, 20);
             this.titulo.Name = "titulo";
-            this.titulo.Size = new System.Drawing.Size(0, 19);
+            this.titulo.Size = new System.Drawing.Size(0, 20);
             this.titulo.TabIndex = 26;
             // 
             // mensaje
             // 
             this.mensaje.AutoSize = true;
-            this.mensaje.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mensaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mensaje.ForeColor = System.Drawing.Color.Black;
             this.mensaje.Location = new System.Drawing.Point(24, 49);
             this.mensaje.Name = "mensaje";
-            this.mensaje.Size = new System.Drawing.Size(0, 19);
+            this.mensaje.Size = new System.Drawing.Size(0, 20);
             this.mensaje.TabIndex = 27;
             // 
             // button1
@@ -80,13 +80,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(385, 126);
+            this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.mensaje);
             this.Controls.Add(this.titulo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MessageBoxPos";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alerta";
             this.Load += new System.EventHandler(this.Form2_Load);

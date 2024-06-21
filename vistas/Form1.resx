@@ -520,6 +520,26 @@
   <metadata name="valorTotal.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="button9.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAALAAAACwARRqq2kAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
+        AAADLklEQVRIS82Wa0hTYRzG1+VDSe3snG26WW7TbbqwkaZiWc4uWlq6rbmlm2bWTFti3rooRjeLJCJI
+        Irp8KSKivgRGSt9L7IMQSWEZ3UiTim6abpU9ve9ZQctxdNSHHvjB++H/PM9538O5iIJoKmEZIXMS0Llp
+        hJCknqtSvXd7KidEFxvn08YZbhFPSCWa7Ny8VwNDo5gIh6sY5TV10MUauohvut8+sUIqaDl1BqvNVugN
+        8zqJlx7vhJp0waVrbdhWW8+jiYkZJl61PyK4poslkvNiMdO3xmz5GCxQCOqhXppBs/yRgbIuWrp8xFPX
+        hNx1tqAhQlDPlu27kLQ43UuyLP7IQJWa7S7YN5Qjh5xpsBAhqMdSUIpFpizQLH+kXzMYRnJuZlhYP8tJ
+        P4crI72MhP2ekJT8LRSoJ1wR6WNY7ivNYhj2LM0WzRKLD+WY7b6qnftQUdOAHXuPYGttY9D1n9TtOQxn
+        aQUcxe4Ayqt3YUW25QvDSltELCvrqKhuAKvUENSwFZVBzcp56FoTJYGasH6jB66y7QEYU9Ogzc2C0e0M
+        gNOosNZWBLKjLhHLkQJylQpNHJTRBhRsqoROqYKelNG1XqtErF4Jp7tqXMHildmQx+kQlZYUgMKgR56j
+        hBTMucMXeOqbxpn/FnrD+QKO5dpT00xDC1OXjv1L4hOSvysiyBFFM1zHxcxCdKT/Wy6k5CFFRnZAC55s
+        aMDdrDJES+SIkSogl8mwxJSBtBCQh0fwXppBs/pyPD8LxKSgpBE3TU5oFVGINybCasvH4KdRdPY8wO17
+        9wWhM88/DMPhdBHvQqgiVXwWLUiWzukSKWdJmltNVp/X3ojuzM381kosdvT0PUXxJvek6O59jMLCIt5L
+        M7y23TiRuApGSfhx/kmOms2c1jLSRwvYiAEDI3/ttOaPDLwfwtXr7bjSdkMQOvPs7QcUOIvGqDeBUwyQ
+        nP5ETnGZf5KDSGO2WF49fP4SVfU7UUlexULQmXtPXsDudPmo1x8hLL7g6eAbHDt5CkdbTwpCZ3r7B/+v
+        ArVWq3vXtP+gt+lA89hkiZ9vpAWCX7RfCuW35XcyCFMIv0kk+gFW89i0iCs+4gAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="despachoBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>353, 17</value>
   </metadata>
@@ -728,6 +748,27 @@
         9PeSm1AB1rQKwN83m9/8metwfy+5iV115UaARckt/+u1hwKYn73ydMfTm78X3cL24kLZDAEqvC3/FfcY
         BagA5rf49RBhNWYClwN9gpvYVF5kRt7Wef4whL+KM3Yh0D9IOBFg588Hx1g5eBzoX324EfaN094a+aCg
         /wCnvaFUfmg50wAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="button8.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
+        rQAAAK0BVE7WMAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAANISURBVEhLzZVL
+        TxNRFMfb2retBUIVwiMthriostCooU3xLenCCGEDibrwE/gNEJOGR4iJ7twQ2BGiSzcqlBbaapHSp4ZH
+        KLTgouURSAeqIa3nP9NphoeG6oZ/8kvOnHvOPXPvPXdGdNLURTzlzP/XdaKeMwsKEW85s6CbxDXOLE5j
+        xCwhZ584vSKecSarCmKbeMM+Fan7xB5xcBVC3SA2ifPsU5GSEDbiJeEmUkQuD2z4MIYiiD22xMQT4juB
+        yZjy8vIZq9U63tba6gAWi8UJH8byMYh9TCD3r6ojXEROq9VG+vv6PBupFDMyPDxjMBg+S6XSFblcHrto
+        Mk26Xa45jPX19nooNoqcfC7mOFLohjWxWLxut9snd9PpbIZhcu3t7Q7yZyUScdJYrfHUVKh8YrFoi3w/
+        e3t63IhB7IuurknK3cAcBLZtn+BgVCrVXDQUSiAJDA0MTJE/d6FO61502BLa07KIoUrtXfjYHC/VydGy
+        Gb/PF+PjI8FgXKlUzmMuwkqwwpI2afLZxNLSOh8M9Hq9X3pKvMIEWhhjtdpLcRki++hhjSM2ZvtB9o7Z
+        bHYKc+Kx2Fq+CLrLSIjc2BZ682VhICD/9hVTqSs325arrVT7KHa3Uq+cir6/twQfVoGzOpgXDQZX8tuF
+        TuMKhIPBowpsXTaVsAU+DVojCrlkgeJzD25VOrgCspBOpwsfzAsHAglhASxjE8vC8oSBZ/X6adqiVWzR
+        1Uul6JBfxJ6tqWI8NmpbJXsHLSvMWV5cTNFceBEUMBCscCAMiuCg+OChwcGv5M/WGzSehVFb4oxGFq2t
+        Un+Z/9AcL9HKgjSWmZmeLhxyyO9fzk+eJizEPqGT0KYbaDm+TTs6Ovg2TeGgq7k2xfcngzuAGMQ+7+yc
+        oFwcLG55E3GkChdNo9F86+nudq8nk+l3IyMBo9HolclkcYVCEWtoaJjwejzzGOu2292IRQ7hJArb8ifh
+        uuPa80k7ZWVlAbRja0uLA5gbG53wYSwfg9hjfSqEwgfsLtFPTBBJIpsHNnwYQ0xRE/O6TaBrDl17gfhP
+        OooULfxwcJj4qfB6TeCnw+scge/SKPtUpO4QWIVQYQLtKRQ65lBL/qvw0+/kzBMhkeg3V7Xqv6zafpQA
+        AAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="separadoBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

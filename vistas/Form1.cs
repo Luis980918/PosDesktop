@@ -1,4 +1,5 @@
-﻿using PosDesktop.context;
+﻿using facturaC_;
+using PosDesktop.context;
 using PosDesktop.controller;
 using PosDesktop.model;
 using PosDesktop.vistas;
@@ -24,10 +25,15 @@ namespace PosDesktop
         int rowSelect = 0;
         List<Venta> detalleVentas = new List<Venta>();
         Despacho despacho = new Despacho();
+
         VentaController ventaController = new VentaController();
         DespachoController despachoController = new DespachoController();
         CierreController cierreController = new CierreController();
+        SeparadoController separadoController = new SeparadoController();
+        AbonoController abonoController = new AbonoController();
+
         List<Despacho> movimientosDia = new List<Despacho>();
+        List<Separado> Separados = new List<Separado>();
         List<Cierre> cierresTotal = new List<Cierre>();
 
         public Form1()
@@ -35,6 +41,7 @@ namespace PosDesktop
             InitializeComponent();
             inicializarGridCierre();
             inicializarGridMovimientos();
+            inicializarGridSeparados();
         }
 
         public void inicializarGridCierre()
@@ -65,6 +72,20 @@ namespace PosDesktop
             {
                 despachoDataGridView.Columns[i].HeaderCell.Style.Font = new Font(despachoDataGridView.Font, FontStyle.Bold);
             }
+        }
+
+        public void inicializarGridSeparados()
+        {
+            separadoDataGridView.Columns[3].DefaultCellStyle.Format = "C0"; // Formato de moneda sin decimales
+            separadoDataGridView.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight; // Alinear a la derecha
+
+            separadoDataGridView.Columns[4].DefaultCellStyle.Format = "C0"; // Formato de moneda sin decimales
+            separadoDataGridView.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight; // Alinear a la derecha
+
+            separadoDataGridView.Columns[3].HeaderCell.Style.Font = new Font(separadoDataGridView.Font, FontStyle.Bold);
+            separadoDataGridView.Columns[3].HeaderCell.Style.Font = new Font(separadoDataGridView.Font, FontStyle.Bold);
+            separadoDataGridView.Columns[4].HeaderCell.Style.Font = new Font(separadoDataGridView.Font, FontStyle.Bold);
+            separadoDataGridView.Columns[4].HeaderCell.Style.Font = new Font(separadoDataGridView.Font, FontStyle.Bold);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -252,14 +273,13 @@ namespace PosDesktop
 
             if (input != null && (input != "0" && decimal.TryParse(input, out valorDevolver)))
             {
-
                 decimal devuelta = valorDevolver - totalPagar;
                 despacho.pagoTotal = totalPagar;
                 despacho.fechaMovimiento = DateTime.Now;
                 despacho.totalRecibido = valorDevolver;
                 despacho.totalDevuelto = devuelta;
                 despacho.ventas = detalleVentas;
-                despachoController.Create(despacho);
+                Despacho despachoCreado = despachoController.Create(despacho);
                 MessageBoxPos messageBoxPos = new MessageBoxPos(this);
                 messageBoxPos.setTitulo("Total a devolver:");
                 messageBoxPos.setMensaje(devuelta.ToString("C0"));
@@ -273,7 +293,12 @@ namespace PosDesktop
                 despacho.totalRecibido = totalPagar;
                 despacho.totalDevuelto = 0;
                 despacho.ventas = detalleVentas;
-                despachoController.Create(despacho);
+                Despacho despachoCreado = despachoController.Create(despacho);
+                if (chkImprimirDocumento.Checked && despachoCreado != null)
+                {
+                    ImprimirDocumentoFactura imprimirDocumentoFactura = new ImprimirDocumentoFactura(despachoCreado, this);
+                    imprimirDocumentoFactura.Show();
+                }
                 limpiarCampos();
                 limpiarTodo();
             }
@@ -311,6 +336,8 @@ namespace PosDesktop
             panelCierreCaja.Visible = true;
             panelMovimientos.Visible = false;
             panelPises.Visible = false;
+            fechaInicialCierre.Value = DateTime.Today;
+            fechaFinalCierre.Value = DateTime.Today;
 
             List<Cierre> cierresExistentes = cierreController.SearchByToday();
 
@@ -350,7 +377,11 @@ namespace PosDesktop
             panelGeneral.Visible = false;
             panelCierreCaja.Visible = false;
             panelPises.Visible = false;
-            despachoBindingSource.DataSource = despachoController.GetDespachos();
+            fechaInicio.Value = DateTime.Today;
+            fechaFin.Value = DateTime.Today;
+            DateTime fechaInicial = fechaInicio.Value;
+            DateTime fechaFinal = fechaFin.Value;
+            despachoBindingSource.DataSource = despachoController.Search(fechaInicial.Date, fechaFinal.Date.AddDays(1));
         }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
@@ -606,6 +637,8 @@ namespace PosDesktop
             panelGeneral.Visible = false;
             panelCierreCaja.Visible = false;
             panelPises.Visible = true;
+
+            consultarSeparados();
         }
 
         private void label18_Click(object sender, EventArgs e)
@@ -626,6 +659,159 @@ namespace PosDesktop
         private void panelPises_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            SeparadoAct separadoAct = new SeparadoAct(this);
+            separadoAct.Show();
+        }
+
+        internal void consultarSeparados()
+        {
+            separadoDataGridView.Refresh();
+            separadoBindingSource.DataSource = null;
+            separadoBindingSource.DataSource = separadoController.GetSeparados();
+            separadoDataGridView.Refresh();
+            filtroFechaSeparado.Value = DateTime.Today;
+        }
+
+        public void actualizarSeparados(Separado separado)
+        {
+            abonoController.CreateList(separado.abonos);
+
+            separadoController.Update(separado);
+            separadoDataGridView.Refresh();
+            generarMensaje(separado);
+            consultarSeparados();
+        }
+
+        private void generarMensaje(Separado separado)
+        {
+            MessageBoxPos messageBoxPos = new MessageBoxPos();
+            messageBoxPos.setTitulo("Aviso");
+            if (separado.restante == 0)
+            {
+                messageBoxPos.setMensaje("¡Separado finalizado!");
+            }
+            else
+            {
+                messageBoxPos.setMensaje("¡Abonado exitosamente!");
+            }
+            messageBoxPos.Show();
+        }
+
+        private void separadosDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            buscarSeparados();
+        }
+
+        private void buscarSeparados()
+        {
+            separadoBindingSource.DataSource = separadoController.SearchByAllFilters(filtroFechaSeparado.Value, DateTime.UtcNow.AddDays(1), filtroClienteSeparado.Text);
+            cierreDataGridView.Refresh();
+        }
+
+        private void filtroClienteSeparado_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buscarSeparados();
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (separadoDataGridView.RowCount > 1)
+            {
+                String id = separadoDataGridView.CurrentRow.Cells[0].Value.ToString();
+                String restante = separadoDataGridView.CurrentRow.Cells[4].Value.ToString();
+                int codigo = 0;
+                decimal totalRestante = 0;
+                if (decimal.TryParse(restante, out totalRestante) && totalRestante != 0)
+                {
+                    if (id != "" && int.TryParse(id, out codigo))
+                    {
+                        SeparadoAct separadoAct = new SeparadoAct(this, codigo);
+                        separadoAct.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Debe seleccionar un separado para ingresar un abono");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Solo puede realizar un abono cuando el separado tiene saldo pendiente");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un separado para ingresar un abono");
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (separadoDataGridView.RowCount > 1)
+            {
+                String id = separadoDataGridView.CurrentRow.Cells[0].Value.ToString();
+                int codigo = 0;
+                if (id != "" && int.TryParse(id, out codigo))
+                {
+                    AbonosVista abonos = new AbonosVista();
+                    abonos.obtenerAbonos(codigo);
+                    abonos.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar un separado para visualizar los abonos");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un separado para visualizar los abonos");
+            }
+        }
+
+        private void chkImprimirDocumento_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        internal void reiniciarCheck()
+        {
+            chkImprimirDocumento.Checked = false;
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            String id = despachoDataGridView.CurrentRow.Cells[0].Value.ToString();
+            int codigo = 0;
+
+            if (id != null && int.TryParse(id, out codigo))
+            {
+                Despacho despacho = despachoController.SearchById(codigo);
+                List<Venta> ventas = ventaController.SearchByDespacho(codigo);
+                despacho.ventas = ventas;
+                if (despacho != null)
+                {
+                    ImprimirDocumentoFactura imprimirDocumentoFactura = new ImprimirDocumentoFactura(despacho, this);
+                    imprimirDocumentoFactura.Show();
+                }
+            } else
+            {
+                MessageBoxPos message = new MessageBoxPos();
+                message.setTitulo("¡Alerta!");
+                message.setMensaje("Debe seleccionar una venta para continuar");
+                message.Show();
+            }
         }
     }
 }

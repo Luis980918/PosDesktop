@@ -33,6 +33,17 @@ namespace PosDesktop.controller
             return db.Ventas.ToList();
         }
 
+        public List<Venta> SearchByDespacho(int despacho)
+        {
+            if (despacho != null)
+            {
+                return db
+                    .Ventas
+                    .Where(x => x.despacho.id == despacho).ToList();
+            }
+            return null;
+        }
+
         public bool Create(Venta venta)
         {
             Venta ventaGuardar = db.Ventas.Add(venta);

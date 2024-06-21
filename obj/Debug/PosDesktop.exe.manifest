@@ -66,26 +66,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.AspNet.Scaffolding.12.0.dll" size="106424">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.AspNet.Scaffolding.12.0.dll" size="109088">
       <assemblyIdentity name="Microsoft.AspNet.Scaffolding.12.0" version="17.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>PyaKluM0GE/IQPeWRXNVU5+A8d/RSwGBwc6PPvMjKSY=</dsig:DigestValue>
+        <dsig:DigestValue>a58z7g2AZToQGJiLHHZRAqe2MoY3b4D+dU96azFfVyI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.AspNet.Scaffolding.EntityFramework.12.0.dll" size="58296">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.AspNet.Scaffolding.EntityFramework.12.0.dll" size="58400">
       <assemblyIdentity name="Microsoft.AspNet.Scaffolding.EntityFramework.12.0" version="17.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>qg3K59tiQFjtnqpvxSGAUlsiKfTy8YhX71JY/CWj8sg=</dsig:DigestValue>
+        <dsig:DigestValue>u9s4ndKXwN5q4swmw/r7+WLS4fmpGlcNyVA2o3Sq7xk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -126,38 +126,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.ComponentModelHost.dll" size="20896">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.ComponentModelHost.dll" size="21008">
       <assemblyIdentity name="Microsoft.VisualStudio.ComponentModelHost" version="17.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>GE4j1ucsPTEytTrMBTpQf+fA92Rul665g6PxNIrMkeg=</dsig:DigestValue>
+        <dsig:DigestValue>PZumB7Uo9Rup8agt+ZMTbXaWWRd92on46BhOcExSrw0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.GraphModel.dll" size="485272">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.GraphModel.dll" size="484888">
       <assemblyIdentity name="Microsoft.VisualStudio.GraphModel" version="17.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>hXqNOkZdLxiKKQ/lefVCpMLfdthIw/vgqFvjlS2mC3o=</dsig:DigestValue>
+        <dsig:DigestValue>Dk1z//unO80o//rLBrMhnOiFiH3YTA3KdEfOkQu37pM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="es\Microsoft.VisualStudio.GraphModel.resources.dll" size="34696">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="es\Microsoft.VisualStudio.GraphModel.resources.dll" size="34752">
       <assemblyIdentity name="Microsoft.VisualStudio.GraphModel.resources" version="17.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="es" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Z66lwkkid1uP79nQ3jkbDi/7O5RGhXDwA06ERgmAwLE=</dsig:DigestValue>
+        <dsig:DigestValue>/kmLK/3FyXKqPRdsT+HNMWaBADwdItj9XsS9Mm/X2eA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -174,98 +174,98 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.Interop.dll" size="2683832">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.Interop.dll" size="2673696">
       <assemblyIdentity name="Microsoft.VisualStudio.Interop" version="17.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>qt6TRZdSuDqL4KfH2gha05yVQ/P+RS5JaFo9kGRGFBc=</dsig:DigestValue>
+        <dsig:DigestValue>DXByD3PCFHd/C9oY43M4P2r/gU3o/h80byl0RjakNOY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.ProjectAggregator.dll" size="14216">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.ProjectAggregator.dll" size="14264">
       <assemblyIdentity name="Microsoft.VisualStudio.ProjectAggregator" version="8.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>diQZrFw/dSAFAMlAHBC22AucYBIVNz4CQ749Y9GvLHM=</dsig:DigestValue>
+        <dsig:DigestValue>y3tYxjYbo4eC5gaBwILD/4Uhs1qRBinxnJ9zfRwNf7E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.RpcContracts.dll" size="142248">
-      <assemblyIdentity name="Microsoft.VisualStudio.RpcContracts" version="17.7.9.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.RpcContracts.dll" size="142240">
+      <assemblyIdentity name="Microsoft.VisualStudio.RpcContracts" version="17.9.7.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lRlvPi1l5RrlamY0C8HB81HgbkmBryGGV0Fm6p8BVxg=</dsig:DigestValue>
+        <dsig:DigestValue>E2siNtCQ0jXXblKJshNa8b6VmL5j/JsOeaJTmMdlhgk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.Shell.15.0.dll" size="3034040">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.Shell.15.0.dll" size="2886176">
       <assemblyIdentity name="Microsoft.VisualStudio.Shell.15.0" version="17.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>tr+GVIy1XBdUro5GqGAUWjWmMLH/bP4wlSoFFu7gqmc=</dsig:DigestValue>
+        <dsig:DigestValue>aYD8Nv0HFWuQix+Ln9s0ZP8f8AnyX58Wbi2iFtTr9yo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="es\Microsoft.VisualStudio.Shell.15.0.resources.dll" size="219168">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="es\Microsoft.VisualStudio.Shell.15.0.resources.dll" size="229408">
       <assemblyIdentity name="Microsoft.VisualStudio.Shell.15.0.resources" version="17.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="es" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>CRFIBSbsYbeoYmaZEdE6e0gtUA/nLl02BHRhOBgXT3I=</dsig:DigestValue>
+        <dsig:DigestValue>3aZF4jWRnRlJrO7Ulgy9WDsiJgiJNczgkbra9B+cpTs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.Shell.Design.dll" size="584072">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.Shell.Design.dll" size="583728">
       <assemblyIdentity name="Microsoft.VisualStudio.Shell.Design" version="17.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ueUSOVOIClxaD3sSToTuQ1HBf0witVRAl5s6xOF9b3o=</dsig:DigestValue>
+        <dsig:DigestValue>oq2dtm3LVGXJ9tpt04wDnFyJ5K8eQ/luxUpldR8BCrw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="es\Microsoft.VisualStudio.Shell.Design.resources.dll" size="33216">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="es\Microsoft.VisualStudio.Shell.Design.resources.dll" size="33312">
       <assemblyIdentity name="Microsoft.VisualStudio.Shell.Design.resources" version="17.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="es" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>HlFUomIFsFGK7rkvnTKIuqW9ZMICC3mMcMJINi8Np1s=</dsig:DigestValue>
+        <dsig:DigestValue>K8ytbmoiWPtSOeNtFJMmMODR16NQe1nmPU50pP88bTc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.Shell.Framework.dll" size="352296">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.Shell.Framework.dll" size="353312">
       <assemblyIdentity name="Microsoft.VisualStudio.Shell.Framework" version="17.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>KryQmezBQ96BP2uBtnGileOfL3tILrG+2n73PwzfqDo=</dsig:DigestValue>
+        <dsig:DigestValue>NzcxbG4huA4/e1/WtDJFfU8sfDrt4WTxLRdAbcfaEvU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -306,14 +306,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PosDesktop.exe" size="933312">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PosDesktop.exe" size="1021376">
       <assemblyIdentity name="PosDesktop" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Cs0H7N6BNreVXKb4nmD15X6a1R4D3ekNcBpmTGRJCHI=</dsig:DigestValue>
+        <dsig:DigestValue>9WgPNaKxWjdNiVSnIch7DK8qO7PU9st5xDi7G2ypbg4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -461,13 +461,22 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="PosDesktop.exe.config" size="2590">
+  <file name="PosDesktop.exe.config" size="2579">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>/jDo8SS5qCdQAK/ihKkfNm8Pq1rKcErq4nqZvb2xwd8=</dsig:DigestValue>
+      <dsig:DigestValue>h4uMDNT2sOSaPF8TggokZUXmXFsyUjot2NhQLnlBGKQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\logo9_1_114356.png" size="661623">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>vS5eZxn1QTr8HJ2J5WlUl0+8Q/5ZXKn+eZg7LnzEwlo=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

@@ -22,6 +22,8 @@ namespace PosDesktop.model
         public decimal restante { get; set; }
         [Required]
         public DateTime fecha { get; set; }
+        [Required]
+        public List<Abono> abonos { get; set; }
 
         [Required]
         public List<Despacho> despachos { get; set; }

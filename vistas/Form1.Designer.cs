@@ -46,8 +46,14 @@ namespace PosDesktop
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.ventas = new System.Windows.Forms.Button();
@@ -58,6 +64,7 @@ namespace PosDesktop
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelGeneral = new System.Windows.Forms.Panel();
+            this.chkImprimirDocumento = new System.Windows.Forms.CheckBox();
             this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -105,23 +112,30 @@ namespace PosDesktop
             this.cierreDataGridView = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.panelPises = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
+            this.separadoDataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.filtroClienteSeparado = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.filtroFechaSeparado = new System.Windows.Forms.DateTimePicker();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label17 = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.despachoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cierreBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.separadoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -129,13 +143,9 @@ namespace PosDesktop
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.despachoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cierreBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ventaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button9 = new System.Windows.Forms.Button();
             fechaMovimientoLabel = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
@@ -152,10 +162,11 @@ namespace PosDesktop
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cierreDataGridView)).BeginInit();
             this.panelPises.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.separadoDataGridView)).BeginInit();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cierreBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.despachoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.separadoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cierreBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ventaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -308,6 +319,7 @@ namespace PosDesktop
             // 
             // panelGeneral
             // 
+            this.panelGeneral.Controls.Add(this.chkImprimirDocumento);
             this.panelGeneral.Controls.Add(this.button3);
             this.panelGeneral.Controls.Add(this.label4);
             this.panelGeneral.Controls.Add(this.groupBox1);
@@ -318,6 +330,19 @@ namespace PosDesktop
             this.panelGeneral.Size = new System.Drawing.Size(1050, 502);
             this.panelGeneral.TabIndex = 11;
             this.panelGeneral.Paint += new System.Windows.Forms.PaintEventHandler(this.panelGeneral_Paint);
+            // 
+            // chkImprimirDocumento
+            // 
+            this.chkImprimirDocumento.AutoSize = true;
+            this.chkImprimirDocumento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.chkImprimirDocumento.ForeColor = System.Drawing.Color.SeaGreen;
+            this.chkImprimirDocumento.Location = new System.Drawing.Point(702, 222);
+            this.chkImprimirDocumento.Name = "chkImprimirDocumento";
+            this.chkImprimirDocumento.Size = new System.Drawing.Size(186, 24);
+            this.chkImprimirDocumento.TabIndex = 8;
+            this.chkImprimirDocumento.Text = "Imprimir documento";
+            this.chkImprimirDocumento.UseVisualStyleBackColor = true;
+            this.chkImprimirDocumento.CheckedChanged += new System.EventHandler(this.chkImprimirDocumento_CheckedChanged);
             // 
             // button3
             // 
@@ -539,6 +564,7 @@ namespace PosDesktop
             // 
             // panelMovimientos
             // 
+            this.panelMovimientos.Controls.Add(this.button9);
             this.panelMovimientos.Controls.Add(this.despachoDataGridView);
             this.panelMovimientos.Controls.Add(this.groupBox3);
             this.panelMovimientos.Controls.Add(this.label6);
@@ -906,24 +932,75 @@ namespace PosDesktop
             // 
             // panelPises
             // 
+            this.panelPises.Controls.Add(this.button8);
+            this.panelPises.Controls.Add(this.separadoDataGridView);
             this.panelPises.Controls.Add(this.groupBox5);
             this.panelPises.Controls.Add(this.button6);
             this.panelPises.Controls.Add(this.button7);
-            this.panelPises.Controls.Add(this.dataGridView1);
             this.panelPises.Controls.Add(this.label17);
             this.panelPises.Location = new System.Drawing.Point(170, 0);
             this.panelPises.Name = "panelPises";
-            this.panelPises.Size = new System.Drawing.Size(1055, 486);
+            this.panelPises.Size = new System.Drawing.Size(1055, 504);
             this.panelPises.TabIndex = 28;
             this.panelPises.Visible = false;
             this.panelPises.Paint += new System.Windows.Forms.PaintEventHandler(this.panelPises_Paint);
             // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
+            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button8.Location = new System.Drawing.Point(734, 318);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(267, 44);
+            this.button8.TabIndex = 46;
+            this.button8.Text = "Visualizar abonos";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // separadoDataGridView
+            // 
+            this.separadoDataGridView.AutoGenerateColumns = false;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.separadoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.separadoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.separadoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18});
+            this.separadoDataGridView.DataSource = this.separadoBindingSource;
+            this.separadoDataGridView.Location = new System.Drawing.Point(57, 236);
+            this.separadoDataGridView.Name = "separadoDataGridView";
+            this.separadoDataGridView.ReadOnly = true;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.separadoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.separadoDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            this.separadoDataGridView.Size = new System.Drawing.Size(643, 220);
+            this.separadoDataGridView.TabIndex = 45;
+            // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.textBox7);
+            this.groupBox5.Controls.Add(this.filtroClienteSeparado);
             this.groupBox5.Controls.Add(this.label19);
             this.groupBox5.Controls.Add(this.label18);
-            this.groupBox5.Controls.Add(this.dateTimePicker1);
+            this.groupBox5.Controls.Add(this.filtroFechaSeparado);
             this.groupBox5.Controls.Add(this.button5);
             this.groupBox5.Location = new System.Drawing.Point(57, 145);
             this.groupBox5.Name = "groupBox5";
@@ -932,13 +1009,14 @@ namespace PosDesktop
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Filtros";
             // 
-            // textBox7
+            // filtroClienteSeparado
             // 
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(144, 36);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(143, 20);
-            this.textBox7.TabIndex = 41;
+            this.filtroClienteSeparado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filtroClienteSeparado.Location = new System.Drawing.Point(144, 36);
+            this.filtroClienteSeparado.Name = "filtroClienteSeparado";
+            this.filtroClienteSeparado.Size = new System.Drawing.Size(143, 20);
+            this.filtroClienteSeparado.TabIndex = 41;
+            this.filtroClienteSeparado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.filtroClienteSeparado_KeyDown);
             // 
             // label19
             // 
@@ -962,13 +1040,13 @@ namespace PosDesktop
             this.label18.TabIndex = 41;
             this.label18.Text = "Fecha:";
             // 
-            // dateTimePicker1
+            // filtroFechaSeparado
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(6, 37);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(110, 20);
-            this.dateTimePicker1.TabIndex = 38;
-            this.dateTimePicker1.Value = new System.DateTime(2023, 12, 11, 18, 42, 21, 0);
+            this.filtroFechaSeparado.Location = new System.Drawing.Point(6, 37);
+            this.filtroFechaSeparado.Name = "filtroFechaSeparado";
+            this.filtroFechaSeparado.Size = new System.Drawing.Size(110, 20);
+            this.filtroFechaSeparado.TabIndex = 38;
+            this.filtroFechaSeparado.Value = new System.DateTime(2023, 12, 11, 18, 42, 21, 0);
             // 
             // button5
             // 
@@ -982,6 +1060,7 @@ namespace PosDesktop
             this.button5.TabIndex = 37;
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -995,6 +1074,7 @@ namespace PosDesktop
             this.button6.TabIndex = 44;
             this.button6.Text = "Actualizar";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -1008,48 +1088,7 @@ namespace PosDesktop
             this.button7.TabIndex = 43;
             this.button7.Text = "Separar";
             this.button7.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14,
-            this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn18,
-            this.dataGridViewTextBoxColumn16,
-            this.dataGridViewTextBoxColumn17});
-            this.dataGridView1.DataSource = this.cierreBindingSource;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dataGridView1.Location = new System.Drawing.Point(57, 219);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.dataGridView1.Size = new System.Drawing.Size(593, 261);
-            this.dataGridView1.TabIndex = 41;
+            this.button7.Click += new System.EventHandler(this.button7_Click_1);
             // 
             // label17
             // 
@@ -1062,57 +1101,112 @@ namespace PosDesktop
             this.label17.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label17.Location = new System.Drawing.Point(54, 37);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(275, 99);
+            this.label17.Size = new System.Drawing.Size(275, 117);
             this.label17.TabIndex = 42;
             this.label17.Text = "Separados";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "pagoTotal";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Total";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "totalRecibido";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Recibido";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "totalDevuelto";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Devuelto";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "fechaMovimiento";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Fecha";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 130;
+            // 
+            // despachoBindingSource
+            // 
+            this.despachoBindingSource.DataSource = typeof(PosDesktop.model.Despacho);
+            // 
             // dataGridViewTextBoxColumn13
             // 
             this.dataGridViewTextBoxColumn13.DataPropertyName = "id";
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewTextBoxColumn13.HeaderText = "Id";
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            this.dataGridViewTextBoxColumn13.Width = 50;
             // 
             // dataGridViewTextBoxColumn14
             // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "pagoTrabajadoras";
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "cliente";
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.dataGridViewTextBoxColumn14.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewTextBoxColumn14.HeaderText = "Cliente";
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn15
             // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "ahorro";
-            this.dataGridViewTextBoxColumn15.HeaderText = "Artículo";
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "articulos";
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.dataGridViewTextBoxColumn15.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dataGridViewTextBoxColumn15.HeaderText = "Artículos";
             this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
             this.dataGridViewTextBoxColumn15.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.DataPropertyName = "totalCierre";
-            this.dataGridViewTextBoxColumn18.HeaderText = "Fecha";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            // 
             // dataGridViewTextBoxColumn16
             // 
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "totalBase";
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "costoTotal";
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewTextBoxColumn16.HeaderText = "Costo total";
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn17
             // 
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "totalEnCaja";
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "restante";
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewTextBoxColumn17.HeaderText = "Restante";
             this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
             this.dataGridViewTextBoxColumn17.ReadOnly = true;
             // 
-            // cierreBindingSource
+            // dataGridViewTextBoxColumn18
             // 
-            this.cierreBindingSource.DataSource = typeof(PosDesktop.model.Cierre);
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "fecha";
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.dataGridViewTextBoxColumn18.DefaultCellStyle = dataGridViewCellStyle16;
+            this.dataGridViewTextBoxColumn18.HeaderText = "Fecha";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            // 
+            // separadoBindingSource
+            // 
+            this.separadoBindingSource.DataSource = typeof(PosDesktop.model.Separado);
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -1164,53 +1258,26 @@ namespace PosDesktop
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn1
+            // cierreBindingSource
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "pagoTotal";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Total";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "totalRecibido";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Recibido";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "totalDevuelto";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Devuelto";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "fechaMovimiento";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Fecha";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 130;
-            // 
-            // despachoBindingSource
-            // 
-            this.despachoBindingSource.DataSource = typeof(PosDesktop.model.Despacho);
+            this.cierreBindingSource.DataSource = typeof(PosDesktop.model.Cierre);
             // 
             // ventaBindingSource
             // 
             this.ventaBindingSource.DataSource = typeof(PosDesktop.model.Venta);
+            // 
+            // button9
+            // 
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
+            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button9.Location = new System.Drawing.Point(989, 108);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(31, 40);
+            this.button9.TabIndex = 26;
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // Form1
             // 
@@ -1218,12 +1285,12 @@ namespace PosDesktop
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.ClientSize = new System.Drawing.Size(1227, 514);
-            this.Controls.Add(this.panelPises);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelLogo);
+            this.Controls.Add(this.panelMovimientos);
+            this.Controls.Add(this.panelPises);
             this.Controls.Add(this.panelCierreCaja);
             this.Controls.Add(this.panelGeneral);
-            this.Controls.Add(this.panelMovimientos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -1251,11 +1318,12 @@ namespace PosDesktop
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cierreDataGridView)).EndInit();
             this.panelPises.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.separadoDataGridView)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cierreBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.despachoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.separadoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cierreBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ventaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -1335,21 +1403,25 @@ namespace PosDesktop
         private Button button4;
         private Panel panelPises;
         private GroupBox groupBox5;
-        private TextBox textBox7;
+        private TextBox filtroClienteSeparado;
         private Label label19;
         private Label label18;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker filtroFechaSeparado;
         private Button button5;
         private Button button6;
         private Button button7;
-        private DataGridView dataGridView1;
+        private Label label17;
+        private BindingSource separadoBindingSource;
+        private DataGridView separadoDataGridView;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private Label label17;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private Button button8;
+        private CheckBox chkImprimirDocumento;
+        private Button button9;
     }
 }
 

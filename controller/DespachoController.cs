@@ -32,10 +32,24 @@ namespace PosDesktop.controller
             }
         }
 
-        public bool Create(Despacho despacho)
+        public Despacho SearchById(int id)
+        {
+            if (id != null)
+            {
+                return db
+                    .Despachos
+                    .Where(x => x.id == id).First();
+            }
+            return null;
+        }
+
+        public Despacho Create(Despacho despacho)
         {
             Despacho ventaGuardar = db.Despachos.Add(despacho);
-            return db.SaveChanges() > 0;
+            if (db.SaveChanges() > 0) {
+                return ventaGuardar;
+            }
+            return null;
         }
 
         public bool Update(Despacho despacho)

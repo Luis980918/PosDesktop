@@ -37,11 +37,11 @@
             // titulo
             // 
             this.titulo.AutoSize = true;
-            this.titulo.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titulo.ForeColor = System.Drawing.Color.Blue;
             this.titulo.Location = new System.Drawing.Point(29, 25);
             this.titulo.Name = "titulo";
-            this.titulo.Size = new System.Drawing.Size(0, 19);
+            this.titulo.Size = new System.Drawing.Size(0, 20);
             this.titulo.TabIndex = 27;
             // 
             // button1
@@ -85,6 +85,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.titulo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MessageTextPos";
