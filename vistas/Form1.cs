@@ -154,7 +154,7 @@ namespace PosDesktop
             }
             else
             {
-                MessageBox.Show("Entrada no válida. Ingrese un número decimal válido.");
+                MessageBox.Show("Entrada no válida. Ingrese un número decimal válido.7");
             }
         }
 
@@ -235,6 +235,31 @@ namespace PosDesktop
                     }
                     items.Rows.RemoveAt(rowSelect);
                 }
+            }
+
+            
+
+            string texto = textBox2.Text;
+            int cantidad = 0;
+            if (int.TryParse(texto, out cantidad))
+            {
+                venta.cantidad = cantidad;
+                int i = items.Rows.Add();
+                cantidadArticulos++;
+                decimal precioArticulo = 0;
+                decimal.TryParse(textBox1.Text, out precioArticulo);
+                items.Rows[i].Cells[0].Value = "Item " + (cantidadArticulos);
+                items.Rows[i].Cells[1].Value = precioArticulo.ToString("N0");
+                items.Rows[i].Cells[2].Value = textBox2.Text;
+                items.Rows[i].Cells[3].Value = venta.precioTotal.ToString("N0");
+                totalPagar = venta.precioTotal + totalPagar;
+                label2.Text = "$" + totalPagar.ToString("N0");
+                if (totalPagar != 0)
+                {
+                    btnPagar.Enabled = true;
+                }
+                detalleVentas.Add(venta);
+                limpiarCampos();
             }
         }
 
@@ -671,14 +696,13 @@ namespace PosDesktop
         {
             separadoDataGridView.Refresh();
             separadoBindingSource.DataSource = null;
-            separadoBindingSource.DataSource = separadoController.GetSeparados();
+            separadoBindingSource.DataSource = separadoController.SearchByAllFilters(null);
             separadoDataGridView.Refresh();
-            filtroFechaSeparado.Value = DateTime.Today;
         }
 
         public void actualizarSeparados(Separado separado)
         {
-            abonoController.CreateList(separado.abonos);
+            bool creado = abonoController.CreateList(separado.abonos);
 
             separadoController.Update(separado);
             separadoDataGridView.Refresh();
@@ -713,7 +737,7 @@ namespace PosDesktop
 
         private void buscarSeparados()
         {
-            separadoBindingSource.DataSource = separadoController.SearchByAllFilters(filtroFechaSeparado.Value, DateTime.UtcNow.AddDays(1), filtroClienteSeparado.Text);
+            separadoBindingSource.DataSource = separadoController.SearchByAllFilters(filtroClienteSeparado.Text);
             cierreDataGridView.Refresh();
         }
 
@@ -812,6 +836,26 @@ namespace PosDesktop
                 message.setMensaje("Debe seleccionar una venta para continuar");
                 message.Show();
             }
+        }
+
+        private void groupBox2_Enter_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelArticulos_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void crearArticulo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

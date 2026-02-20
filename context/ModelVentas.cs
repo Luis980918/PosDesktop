@@ -18,6 +18,9 @@ namespace PosDesktop.context
         public virtual DbSet<Cierre> Cierres { get; set; }
         public virtual DbSet<Separado> Separados { get; set; }
         public virtual DbSet<Abono> Abonos { get; set; }
+        public virtual DbSet<Linea> Lineas { get; set; }
+        public virtual DbSet<Proveedor> Proveedores { get; set; }
+        public virtual DbSet<Articulo> Articulos { get; set; }
 
     }
 }

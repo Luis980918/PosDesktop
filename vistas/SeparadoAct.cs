@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PosDesktop.vistas
 {
@@ -32,6 +32,7 @@ namespace PosDesktop.vistas
 
             this.form1 = form1;
             fecha.Value = DateTime.Today;
+            WireFormattingEvents();
         }
         public SeparadoAct(Form1 form1, int idSeparado)
         {
@@ -42,25 +43,47 @@ namespace PosDesktop.vistas
             this.idSeparado = idSeparado;
 
             setSeparado(idSeparado);
+            WireFormattingEvents();
+        }
+
+        private void WireFormattingEvents()
+        {
+            txtAbono.Leave += (_, __) => FormatTextBoxNumber(txtAbono);
+            txtRestante.Leave += (_, __) => FormatTextBoxNumber(txtRestante);
+            txtValorTotal.Leave += (_, __) => FormatTextBoxNumber(txtValorTotal);
+        }
+
+        private static bool TryParseDecimal(string text, out decimal value)
+        {
+            return decimal.TryParse(text, NumberStyles.Number, CultureInfo.CurrentCulture, out value);
+        }
+
+        private static void FormatTextBoxNumber(TextBox textBox)
+        {
+            if (TryParseDecimal(textBox.Text, out decimal value))
+            {
+                textBox.Text = value.ToString("N0", CultureInfo.CurrentCulture);
+                textBox.SelectionStart = textBox.Text.Length;
+            }
         }
 
 
         private void button1_Click(object sender, EventArgs e)
         {
             decimal valor = 0;
-            if (!decimal.TryParse(txtValorTotal.Text, out valor))
+            if (!TryParseDecimal(txtValorTotal.Text, out valor))
             {
                 MessageBox.Show("La columna valor total no posee un número decimal válido.");
-            } else if (!decimal.TryParse(txtRestante.Text, out valor))
+            } else if (!TryParseDecimal(txtRestante.Text, out valor))
             {
                 MessageBox.Show("La columna valor restante total no posee un número decimal válido.");
             }
-            else if (!decimal.TryParse(txtAbono.Text, out valor))
+            else if (!TryParseDecimal(txtAbono.Text, out valor))
             {
                 btnGuardar.Enabled = false;
                 MessageBox.Show("La columna abono no posee un número decimal válido.");
             }
-            else if (decimal.TryParse(txtAbono.Text, out valor) && 
+            else if (TryParseDecimal(txtAbono.Text, out valor) &&
                 (valor < VALOR_MINIMO_SEPARADO) && 
                 crear == true)
             {
@@ -76,9 +99,9 @@ namespace PosDesktop.vistas
                     decimal valorTotal = 0;
                     decimal valorRestante = 0;
                     decimal abono = 0;
-                    decimal.TryParse(txtValorTotal.Text, out valorTotal);
-                    decimal.TryParse(txtRestante.Text, out valorRestante);
-                    decimal.TryParse(txtAbono.Text, out abono);
+                    TryParseDecimal(txtValorTotal.Text, out valorTotal);
+                    TryParseDecimal(txtRestante.Text, out valorRestante);
+                    TryParseDecimal(txtAbono.Text, out abono);
 
 
 
@@ -86,25 +109,35 @@ namespace PosDesktop.vistas
                     {
                         Abono abonoCrear = new Abono();
                         abonoCrear.fechaPago = DateTime.Now;
-                        abonoCrear.valorAbono = abono;
+                        decimal abonoAplicado = abono;
+                        if (abono > valorTotal)
+                        {
+                            abonoAplicado = valorTotal;
+                            decimal devuelta = abono - valorTotal;
+                            MessageBoxPos messageBoxPos = new MessageBoxPos();
+                            messageBoxPos.setTitulo("Total a devolver:");
+                            messageBoxPos.setMensaje(devuelta.ToString("C0"));
+                            messageBoxPos.Show();
+                        }
+                        abonoCrear.valorAbono = abonoAplicado;
                         separado = new Separado();
 
                         separado.cliente = txtCliente.Text;
                         separado.articulos = txtArticulos.Text;
                         separado.fecha = fecha.Value;
                         separado.costoTotal = valorTotal;
-                        separado.restante = valorTotal - abono;
+                        separado.restante = valorTotal - abonoAplicado;
                         
 
                         Despacho despacho = new Despacho();
-                        despacho.pagoTotal = abono;
+                        despacho.pagoTotal = abonoAplicado;
                         despacho.fechaMovimiento = DateTime.Now;
-                        despacho.totalRecibido = abono;
+                        despacho.totalRecibido = abonoAplicado;
                         despacho.totalDevuelto = 0;
 
                         Venta venta = new Venta();
                         venta.numeroItem = 1;
-                        venta.precioUnitario = abono;
+                        venta.precioUnitario = abonoAplicado;
                         venta.cantidad = 1;
                         List<Venta> ventas = new List<Venta>();
                         ventas.Add(venta);
@@ -132,35 +165,37 @@ namespace PosDesktop.vistas
                     {
                         Abono abonoCrear = new Abono();
                         abonoCrear.fechaPago = DateTime.Now;
-                        abonoCrear.valorAbono = abono;
+                        decimal abonoAplicado = abono;
 
                         if (this.separado.restante < abono)
                         {
+                            abonoAplicado = this.separado.restante;
                             this.separado.restante = 0;
                         } else
                         {
                             this.separado.restante = this.separado.restante - abono;
                         }
+                        abonoCrear.valorAbono = abonoAplicado;
 
 
                         Despacho despacho = new Despacho();
-                        despacho.pagoTotal = abono;
+                        despacho.pagoTotal = abonoAplicado;
                         despacho.fechaMovimiento = DateTime.Now;
-                        despacho.totalRecibido = abono;
+                        despacho.totalRecibido = abonoAplicado;
                         despacho.totalDevuelto = 0;
 
                         Venta venta = new Venta();
                         venta.numeroItem = 1;
-                        venta.precioUnitario = abono;
+                        venta.precioUnitario = abonoAplicado;
                         venta.cantidad = 1;
                         List<Venta> ventas = new List<Venta>();
                         ventas.Add(venta);
 
                         List<Separado> separados = new List<Separado>();
                         separados.Add(this.separado);
-
                         List<Abono> abonos = new List<Abono>();
-
+                        abonoCrear.separado_id = this.separado.id;
+                        abonoCrear.separado = this.separado;
                         abonos.Add(abonoCrear);
 
                         this.separado.abonos = abonos;
@@ -172,6 +207,7 @@ namespace PosDesktop.vistas
                         this.separado.despachos = despachos;
                         this.separado.fecha = DateTime.Today;
                         this.form1.actualizarSeparados(this.separado);
+                      
                     }
                 }
                 else
@@ -189,27 +225,12 @@ namespace PosDesktop.vistas
 
         private void txtRestante_TextChanged(object sender, EventArgs e)
         {
-            if (decimal.TryParse(txtRestante.Text, out decimal value))
-            {
-                txtRestante.Text = value.ToString("N0");
-                txtRestante.SelectionStart = txtRestante.Text.Length;
-            }
+            // Validación y formato se hacen en el guardado o al salir del campo.
         }
 
         private void txtAbono_TextChanged(object sender, EventArgs e)
         {
-            decimal valor = 0;
-            if (decimal.TryParse(txtAbono.Text, out decimal value))
-            {
-                txtAbono.Text = value.ToString("N0");
-                txtAbono.SelectionStart = txtAbono.Text.Length;
-            } else if (txtValorTotal.Text == "" || txtValorTotal.Text == "0")
-            {
-                MessageBox.Show("La columna valor total debe tener un valor mayor que cero");
-            } else if (!decimal.TryParse(txtValorTotal.Text, out valor))
-            {
-                MessageBox.Show("La columna valor total no posee un número decimal válido.");
-            }
+            // Validación y formato se hacen en el guardado o al salir del campo.
         }
 
         private void fecha_ValueChanged(object sender, EventArgs e)
@@ -282,11 +303,7 @@ namespace PosDesktop.vistas
 
         private void txtValorTotal_TextChanged_1(object sender, EventArgs e)
         {
-            if (decimal.TryParse(txtValorTotal.Text, out decimal value))
-            {
-                txtValorTotal.Text = value.ToString("N0");
-                txtValorTotal.SelectionStart = txtValorTotal.Text.Length;
-            }
+            // Validación y formato se hacen en el guardado o al salir del campo.
         }
 
         private void txtValorTotal_KeyDown_1(object sender, KeyEventArgs e)
@@ -313,8 +330,8 @@ namespace PosDesktop.vistas
             decimal restante = 0;
             if (txtValorTotal.Text != "" && 
                 txtAbono.Text != "" && 
-                decimal.TryParse(txtValorTotal.Text, out decimal value) &&
-                decimal.TryParse(txtAbono.Text, out decimal value2))
+                TryParseDecimal(txtValorTotal.Text, out decimal value) &&
+                TryParseDecimal(txtAbono.Text, out decimal value2))
             {
                 if (value >= value2)
                 {
@@ -340,13 +357,13 @@ namespace PosDesktop.vistas
             decimal restante = 0;
             if (txtValorTotal.Text != "" && 
                 txtAbono.Text != "" && 
-                decimal.TryParse(txtValorTotal.Text, out decimal value) &&
-                decimal.TryParse(txtAbono.Text, out decimal value2) && separado != null && 
+                TryParseDecimal(txtValorTotal.Text, out decimal value) &&
+                TryParseDecimal(txtAbono.Text, out decimal value2) && separado != null && 
                 separado.restante != null)
             {
-                 restante = separado.restante - value2;
-                    if (restante > value2)
+                    if ((separado.restante - value2) > 0)
                     {
+                        restante = separado.restante - value2;
                         btnGuardar.Enabled = true;
                     } else
                     {

@@ -17,7 +17,7 @@
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\luis9\OneDrive\Documentos\PD\</PublishUrl>
+    <PublishUrl>C:\Users\luis9\OneDrive\Escritorio\PDN\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -27,8 +27,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>18</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -63,7 +62,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -137,24 +136,31 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\ArticuloController.cs" />
+    <Compile Include="controller\LineaController.cs" />
+    <Compile Include="Migrations\20260220000100_SyncSchema.cs" />
+    <Compile Include="Migrations\20260220000100_SyncSchema.Designer.cs">
+      <DependentUpon>20260220000100_SyncSchema.cs</DependentUpon>
+    </Compile>
     <Compile Include="controller\AbonoController.cs" />
     <Compile Include="controller\SeparadoController.cs" />
-    <Compile Include="Migrations\202406200218364_ssssss.cs" />
-    <Compile Include="Migrations\202406200218364_ssssss.Designer.cs">
-      <DependentUpon>202406200218364_ssssss.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202406200226442_ssssdcccc.cs" />
-    <Compile Include="Migrations\202406200226442_ssssdcccc.Designer.cs">
-      <DependentUpon>202406200226442_ssssdcccc.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="model\Abono.cs" />
+    <Compile Include="model\Articulo.cs" />
+    <Compile Include="model\Linea.cs" />
+    <Compile Include="model\Proveedor.cs" />
     <Compile Include="model\Separado.cs" />
     <Compile Include="vistas\AbonosVista.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="vistas\AbonosVista.Designer.cs">
       <DependentUpon>AbonosVista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\ArticulosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistas\ArticulosForm.Designer.cs">
+      <DependentUpon>ArticulosForm.cs</DependentUpon>
     </Compile>
     <Compile Include="vistas\CierreAct.cs">
       <SubType>Form</SubType>
@@ -202,14 +208,14 @@
     <Compile Include="vistas\SeparadoAct.Designer.cs">
       <DependentUpon>SeparadoAct.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Migrations\202406200218364_ssssss.resx">
-      <DependentUpon>202406200218364_ssssss.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202406200226442_ssssdcccc.resx">
-      <DependentUpon>202406200226442_ssssdcccc.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\20260220000100_SyncSchema.resx">
+      <DependentUpon>20260220000100_SyncSchema.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vistas\AbonosVista.resx">
       <DependentUpon>AbonosVista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vistas\ArticulosForm.resx">
+      <DependentUpon>ArticulosForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="vistas\CierreAct.resx">
       <DependentUpon>CierreAct.cs</DependentUpon>
@@ -310,7 +316,10 @@
     <None Include="img\activo.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="img\logo.png" />
+    <None Include="img\logo2.png" />
     <Content Include="Resources\logo9_1_114356.png" />
+    <None Include="Resources\logotipo.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" />

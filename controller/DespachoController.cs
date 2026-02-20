@@ -45,11 +45,15 @@ namespace PosDesktop.controller
 
         public Despacho Create(Despacho despacho)
         {
-            Despacho ventaGuardar = db.Despachos.Add(despacho);
-            if (db.SaveChanges() > 0) {
-                return ventaGuardar;
+            using (var context = new ModelVentas())
+            {
+                Despacho ventaGuardar = context.Despachos.Add(despacho);
+                if (context.SaveChanges() > 0)
+                {
+                    return ventaGuardar;
+                }
+                return null;
             }
-            return null;
         }
 
         public bool Update(Despacho despacho)

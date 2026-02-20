@@ -34,14 +34,10 @@ namespace PosDesktop.controller
             return db.Separados.ToList();
         }
 
-        public List<Separado> SearchByAllFilters(DateTime fechaInicio, DateTime fechaFin, String nombreCliente)
+        public List<Separado> SearchByAllFilters(String nombreCliente)
         {
-            DateTime inicio = fechaInicio != null ? fechaInicio : DateTime.UtcNow;
-            DateTime fin = fechaFin != null ? fechaFin : DateTime.UtcNow.AddDays(1);
-
             return db.Separados
-                     .Where(x => x.fecha >= inicio && x.fecha < fin &&
-                                 (nombreCliente == null || x.cliente.Contains(nombreCliente)))
+                     .Where(x => (nombreCliente == null || x.cliente.Contains(nombreCliente)) && (x.restante > 0))
                      .ToList();
         }
 
@@ -72,8 +68,9 @@ namespace PosDesktop.controller
         public bool Update(Separado separado)
         {
             Separado separadoAct = SearchById(separado.id);
-            separadoAct.despachos = separado.despachos;
+            //separadoAct.despachos = separado.despachos;
             separadoAct.restante = separado.restante;
+
             db.Separados.Attach(separadoAct);
             db.Entry(separadoAct).State = EntityState.Modified;
             return db.SaveChanges() > 0;

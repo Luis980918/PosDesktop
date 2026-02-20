@@ -1,11 +1,13 @@
 ﻿using PosDesktop.context;
 using PosDesktop.model;
+using PosDesktop.vistas;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace PosDesktop.controller
 {
@@ -63,15 +65,26 @@ namespace PosDesktop.controller
             Abono ventaGuardar = db.Abonos.Add(abonos);
             return db.SaveChanges() > 0;
         }
-        public bool CreateList(List<Abono> listaAbonos)
+        public bool CreateList(ICollection<Abono> listaAbonos)
         {
             try
             {
                 // Añade la lista completa de abonos al contexto
-                db.Abonos.AddRange(listaAbonos);
 
-                // Guarda todos los cambios en la base de datos y verifica si se guardaron al menos un cambio
-                return db.SaveChanges() > 0;
+                using (var context = new ModelVentas())
+                {
+
+                    context.Abonos.AddRange(listaAbonos);
+
+                    listaAbonos.ToList().ForEach(a => {
+                        context.Entry(a.separado).State = EntityState.Modified;
+
+                    });
+
+
+                    // Guarda todos los cambios en la base de datos y verifica si se guardaron al menos un cambio
+                    return context.SaveChanges() > 0;
+                }
             }
             catch (Exception ex)
             {

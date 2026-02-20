@@ -23,9 +23,9 @@ namespace PosDesktop.model
         [Required]
         public DateTime fecha { get; set; }
         [Required]
-        public List<Abono> abonos { get; set; }
+        public ICollection<Abono> abonos { get; set; }
 
         [Required]
-        public List<Despacho> despachos { get; set; }
+        public ICollection<Despacho> despachos { get; set; }
     }
 }

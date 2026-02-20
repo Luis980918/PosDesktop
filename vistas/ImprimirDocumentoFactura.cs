@@ -74,8 +74,8 @@ namespace facturaC_
 
             string line = "****************************************************************";
 
-            Image logoImage = Image.FromFile("C:\\Users\\luis9\\OneDrive\\Documentos\\Repositorios personales\\PosDesktop\\Resources\\logo9_1_114356.png");
-            e.Graphics.DrawImage(logoImage, (e.PageBounds.Width - 50) / 2, 5, 50, 35);
+            Image logoImage = PosDesktop.Properties.Resources.logo2;
+            e.Graphics.DrawImage(logoImage, (e.PageBounds.Width - 100) / 2, 5, 100, 35);
 
             int startY = 40; // Posición inicial vertical del primer texto
 

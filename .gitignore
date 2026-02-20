@@ -1,0 +1,36 @@
+# Build artifacts
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ClickOnce & publish
+app.publish/
+*.application
+*.manifest
+
+# Binaries anywhere (not recommended, but requested)
+*.dll
+
+# NuGet packages (repo uses packages folder)
+packages/
+
+# Logs and temp
+*.log
+*.tmp
+*.temp
+*.bak
+*.cache
+*.pdb
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# EF / migrations generated resources in obj
+obj/**/PosDesktop.Migrations.*.resources
